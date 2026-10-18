@@ -1,0 +1,8 @@
+id: api-no-request-cast
+valid:
+  - "const id = request.params.id;"
+  - "const body: CreateRequest = request.body;"
+invalid:
+  - "const body = request.body as CreateRequest;"
+  - "const { id } = request.params as { id: string };"
+  - "const status = request.query as { status?: string };"

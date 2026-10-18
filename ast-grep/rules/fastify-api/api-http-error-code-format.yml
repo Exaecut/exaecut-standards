@@ -1,0 +1,20 @@
+id: api-http-error-code-format
+language: TypeScript
+severity: error
+message: HttpError codes must be lower_snake_case, optionally prefixed with a legacy domain/.
+note: |
+  Error codes are part of the wire contract, so keep them predictable. Use
+  lower_snake_case such as `bad_request`, and only use the `domain/` prefix when
+  an existing legacy contract requires it.
+rule:
+  pattern: new HttpError($STATUS, $CODE, $$$REST)
+constraints:
+  CODE:
+    all:
+      - kind: string
+      - not:
+          regex: "^[\"'][a-z][a-z0-9_]*(/[a-z][a-z0-9_]*)?[\"']$"
+files:
+  - "**/src/**"
+ignores:
+  - "**/*.test.ts"

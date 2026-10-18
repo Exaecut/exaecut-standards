@@ -1,0 +1,16 @@
+id: ts-no-ts-suppression-comments
+valid:
+  - "const value: number = 1;"
+  - |
+    // This boundary is validated by parsePayload at runtime.
+    const payload: unknown = JSON.parse(input);
+invalid:
+  - |
+    // @ts-ignore
+    const value: number = "not a number";
+  - |
+    /* @ts-nocheck */
+    const value = 1;
+  - |
+    // @ts-expect-error -- legacy call
+    legacyCall();

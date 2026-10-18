@@ -1,0 +1,14 @@
+id: prgpu-placeholder
+snapshots:
+  __exaecut_prgpu_placeholder_never_matches__(value);:
+    labels:
+    - source: __exaecut_prgpu_placeholder_never_matches__(value)
+      style: primary
+      start: 0
+      end: 50
+  "let x = __exaecut_prgpu_placeholder_never_matches__(a, b);":
+    labels:
+    - source: __exaecut_prgpu_placeholder_never_matches__(a, b)
+      style: primary
+      start: 8
+      end: 57

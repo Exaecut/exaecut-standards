@@ -1,0 +1,25 @@
+id: rust-unsafe-fn-requires-safety-doc
+valid:
+  - |
+    /// Reads one byte.
+    ///
+    /// # Safety
+    /// `ptr` must be valid for reads.
+    pub unsafe fn read(ptr: *const u8) -> u8 {
+        unsafe { *ptr }
+    }
+  - |
+    unsafe fn private_helper(ptr: *const u8) -> u8 {
+        unsafe { *ptr }
+    }
+invalid:
+  - |
+    /// Reads one byte.
+    pub unsafe fn read(ptr: *const u8) -> u8 {
+        unsafe { *ptr }
+    }
+  - |
+    /// Writes one byte.
+    pub unsafe fn write(ptr: *mut u8, value: u8) {
+        unsafe { *ptr = value; }
+    }

@@ -1,0 +1,16 @@
+id: rust-no-print-in-lib
+valid:
+  - 'tracing::info!("loaded");'
+  - 'writeln!(stdout, "loaded")?;'
+  - |
+    #[cfg(test)]
+    mod tests {
+        #[test]
+        fn prints_for_debugging() {
+            println!("value: {}", 1);
+        }
+    }
+invalid:
+  - 'println!("loaded");'
+  - 'eprintln!("failed: {}", error);'
+  - 'print!("progress");'

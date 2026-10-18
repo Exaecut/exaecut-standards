@@ -1,0 +1,8 @@
+ruleDirs:
+  - ast-grep/rules/ts-core
+  - ast-grep/rules/fastify-api
+  - ast-grep/rules/rust-core
+  - ast-grep/rules/prgpu
+  - ast-grep/rules/next-app
+testConfigs:
+  - testDir: ast-grep/rule-tests

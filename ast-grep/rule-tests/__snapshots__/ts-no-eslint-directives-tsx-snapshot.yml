@@ -1,0 +1,14 @@
+id: ts-no-eslint-directives-tsx
+snapshots:
+  "/* eslint-disable */\nexport const Value = () => <span>ok</span>;\n":
+    labels:
+    - source: /* eslint-disable */
+      style: primary
+      start: 0
+      end: 20
+  "// eslint-disable-next-line jsx-a11y/alt-text\nexport const Image = () => <img src=\"/dot.png\" />;\n":
+    labels:
+    - source: // eslint-disable-next-line jsx-a11y/alt-text
+      style: primary
+      start: 0
+      end: 45

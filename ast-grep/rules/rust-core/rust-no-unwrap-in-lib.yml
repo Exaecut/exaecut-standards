@@ -1,0 +1,33 @@
+id: rust-no-unwrap-in-lib
+language: Rust
+severity: warning
+message: Do not unwrap in library code; propagate the error or handle it explicitly.
+note: |
+  A panic in library code takes down the caller's process and cannot be handled.
+  Use `?` with a typed error, `expect` only with a proven invariant, or match on
+  the error. Tests, examples, benches and `#[cfg(test)]` modules are excluded.
+rule:
+  kind: call_expression
+  all:
+    - has:
+        field: function
+        kind: field_expression
+        has:
+          field: field
+          regex: "^unwrap$"
+    - not:
+        inside:
+          kind: mod_item
+          stopBy: end
+          follows:
+            kind: attribute_item
+            regex: 'cfg\(test\)'
+            stopBy: neighbor
+files:
+  - "**/src/**"
+ignores:
+  - "**/tests/**"
+  - "**/examples/**"
+  - "**/benches/**"
+  - "**/build.rs"
+  - "**/*.test.rs"

@@ -1,0 +1,21 @@
+id: rust-no-unwrap-in-lib
+valid:
+  - "let value = result?;"
+  - "let value = result.unwrap_or_default();"
+  - |
+    fn helper() -> Result<u8, Error> {
+        let value = read()?;
+        Ok(value)
+    }
+
+    #[cfg(test)]
+    mod tests {
+        #[test]
+        fn reads() {
+            let value = read().unwrap();
+            assert_eq!(value, 1);
+        }
+    }
+invalid:
+  - "let value = result.unwrap();"
+  - "let value = map.get(&key).unwrap();"

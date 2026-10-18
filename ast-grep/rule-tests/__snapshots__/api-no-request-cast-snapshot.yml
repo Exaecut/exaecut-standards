@@ -1,0 +1,20 @@
+id: api-no-request-cast
+snapshots:
+  const body = request.body as CreateRequest;:
+    labels:
+    - source: request.body as CreateRequest
+      style: primary
+      start: 13
+      end: 42
+  "const status = request.query as { status?: string };":
+    labels:
+    - source: "request.query as { status?: string }"
+      style: primary
+      start: 15
+      end: 51
+  "const { id } = request.params as { id: string };":
+    labels:
+    - source: "request.params as { id: string }"
+      style: primary
+      start: 15
+      end: 47

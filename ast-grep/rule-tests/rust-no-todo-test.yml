@@ -1,0 +1,8 @@
+id: rust-no-todo
+valid:
+  - "return Err(Error::Unsupported);"
+  - 'panic!("unreachable: validated above");'
+invalid:
+  - "todo!();"
+  - 'unimplemented!("wire this up");'
+  - 'todo!("handle the remaining formats");'

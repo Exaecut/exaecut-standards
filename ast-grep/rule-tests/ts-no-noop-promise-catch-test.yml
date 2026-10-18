@@ -1,0 +1,10 @@
+id: ts-no-noop-promise-catch
+valid:
+  - "task.catch((error) => handle(error));"
+  - |
+    task.catch(() => {
+      reportFailure();
+    });
+invalid:
+  - "task.catch(() => {});"
+  - "task.catch(() => undefined);"

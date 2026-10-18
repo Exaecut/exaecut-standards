@@ -1,0 +1,16 @@
+id: ts-no-eslint-directives-tsx
+valid:
+  - |
+    export function Value() {
+      return <span>ok</span>;
+    }
+  - |
+    // biome-ignore lint/a11y/useAltText: decorative image
+    export const Image = () => <img src="/dot.png" />;
+invalid:
+  - |
+    // eslint-disable-next-line jsx-a11y/alt-text
+    export const Image = () => <img src="/dot.png" />;
+  - |
+    /* eslint-disable */
+    export const Value = () => <span>ok</span>;

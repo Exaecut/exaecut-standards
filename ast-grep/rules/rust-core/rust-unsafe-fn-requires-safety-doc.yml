@@ -1,0 +1,23 @@
+id: rust-unsafe-fn-requires-safety-doc
+language: Rust
+severity: warning
+message: Public unsafe functions must document a `# Safety` section.
+note: |
+  Callers of a public unsafe function need to know the exact preconditions they
+  must uphold. Add a `# Safety` section to the doc comment describing every
+  requirement, then reference it from the unsafe blocks that call the function.
+rule:
+  kind: function_item
+  all:
+    - has:
+        kind: visibility_modifier
+        regex: "^pub"
+    - has:
+        kind: function_modifiers
+        regex: "unsafe"
+    - not:
+        follows:
+          kind: line_comment
+          regex: "# Safety"
+          stopBy:
+            kind: function_item

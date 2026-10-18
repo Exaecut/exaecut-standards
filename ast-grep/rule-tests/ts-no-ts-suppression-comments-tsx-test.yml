@@ -1,0 +1,18 @@
+id: ts-no-ts-suppression-comments-tsx
+valid:
+  - |
+    export function Value() {
+      return <span>ok</span>;
+    }
+  - |
+    // Types are validated at the boundary.
+    const payload: unknown = read();
+invalid:
+  - |
+    // @ts-ignore
+    export function Value() {
+      return <span>ok</span>;
+    }
+  - |
+    /* @ts-nocheck */
+    export const Value = () => <span>ok</span>;

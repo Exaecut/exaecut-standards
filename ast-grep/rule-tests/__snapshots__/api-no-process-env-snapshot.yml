@@ -1,0 +1,14 @@
+id: api-no-process-env
+snapshots:
+  const level = env.LOG_LEVEL;:
+    labels:
+    - source: env.LOG_LEVEL
+      style: primary
+      start: 14
+      end: 27
+  const url = process.env.DATABASE_URL;:
+    labels:
+    - source: process.env
+      style: primary
+      start: 12
+      end: 23

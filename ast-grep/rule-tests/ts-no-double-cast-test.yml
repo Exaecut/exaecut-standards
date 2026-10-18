@@ -1,0 +1,7 @@
+id: ts-no-double-cast
+valid:
+  - "const value = input as string;"
+  - "const raw = input as unknown;"
+invalid:
+  - "const value = input as unknown as Target;"
+  - "const nested = (payload as unknown as Wrapper).value;"

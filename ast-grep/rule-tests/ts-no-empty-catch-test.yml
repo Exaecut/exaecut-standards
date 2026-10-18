@@ -1,0 +1,23 @@
+id: ts-no-empty-catch
+valid:
+  - |
+    try {
+      run();
+    } catch (error) {
+      throw error;
+    }
+  - |
+    try {
+      run();
+    } catch {
+      /* best effort: shutdown is already in progress */
+    }
+invalid:
+  - |
+    try {
+      run();
+    } catch (error) {}
+  - |
+    try {
+      run();
+    } catch {}

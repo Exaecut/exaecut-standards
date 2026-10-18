@@ -1,0 +1,16 @@
+id: ts-no-double-cast-tsx
+language: Tsx
+severity: warning
+message: Do not launder types through `as unknown as`; model the real shape instead.
+note: |
+  A double cast disables assignability checks and moves a compile-time problem to
+  runtime. Parse or validate the value at the boundary (for example with a schema),
+  or fix the source type. If an escape hatch is unavoidable, isolate it in one
+  adapter with a comment explaining the invariant.
+rule:
+  pattern: $VALUE as unknown as $TYPE
+files:
+  - "**/*.tsx"
+ignores:
+  - "**/*.test.tsx"
+  - "**/*.spec.tsx"

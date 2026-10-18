@@ -1,0 +1,20 @@
+id: api-http-error-code-format
+snapshots:
+  "throw new HttpError(400, \"Bad/Code\", \"bad input\");":
+    labels:
+    - source: new HttpError(400, "Bad/Code", "bad input")
+      style: primary
+      start: 6
+      end: 49
+  "throw new HttpError(400, \"BadRequest\", \"bad input\");":
+    labels:
+    - source: new HttpError(400, "BadRequest", "bad input")
+      style: primary
+      start: 6
+      end: 51
+  "throw new HttpError(400, \"bad request\", \"bad input\");":
+    labels:
+    - source: new HttpError(400, "bad request", "bad input")
+      style: primary
+      start: 6
+      end: 52

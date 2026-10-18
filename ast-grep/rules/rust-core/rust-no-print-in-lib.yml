@@ -1,0 +1,31 @@
+id: rust-no-print-in-lib
+language: Rust
+severity: warning
+message: Do not print from library code; return values or emit structured logs.
+note: |
+  println!, print! and eprintln! bypass the crate's logging and make output
+  uncontrollable for embedders. Return data to the caller or use tracing/log.
+  Binary entry points (src/main.rs, src/bin), tests including #[cfg(test)]
+  modules, examples and build scripts are excluded.
+rule:
+  any:
+    - pattern: println!($$$ARGS)
+    - pattern: eprintln!($$$ARGS)
+    - pattern: print!($$$ARGS)
+  not:
+    inside:
+      kind: mod_item
+      stopBy: end
+      follows:
+        kind: attribute_item
+        regex: 'cfg\(test\)'
+        stopBy: neighbor
+files:
+  - "**/src/**"
+ignores:
+  - "**/src/main.rs"
+  - "**/src/bin/**"
+  - "**/tests/**"
+  - "**/examples/**"
+  - "**/benches/**"
+  - "**/build.rs"

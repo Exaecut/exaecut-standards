@@ -1,0 +1,19 @@
+id: api-rls-context-required
+valid:
+  - |
+    const { rows } = await client.query("SELECT 1");
+  - |
+    const { rows } = await withUserContext(db, userId, (client) => client.query("SELECT 1"));
+invalid:
+  - |
+    const { rows } = await db.query("SELECT 1");
+  - |
+    await pool.query("SELECT 1");
+  - |
+    const { rows } = await deps.db.query("SELECT 1");
+  - |
+    const { rows } = await app.deps.db.query("SELECT 1");
+  - |
+    const { rows } = await this.db.query("SELECT 1");
+  - |
+    const { rows } = await request.server.deps.db.query("SELECT 1");

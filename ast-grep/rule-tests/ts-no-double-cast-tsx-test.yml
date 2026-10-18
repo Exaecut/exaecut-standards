@@ -1,0 +1,9 @@
+id: ts-no-double-cast-tsx
+valid:
+  - |
+    export const value = <div>{input as string}</div>;
+  - "const raw = input as unknown;"
+invalid:
+  - "const value = input as unknown as Target;"
+  - |
+    export const node = <div>{payload as unknown as Wrapper}</div>;

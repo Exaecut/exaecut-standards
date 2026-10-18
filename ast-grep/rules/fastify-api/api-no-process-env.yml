@@ -1,0 +1,17 @@
+id: api-no-process-env
+language: TypeScript
+severity: error
+message: Read environment variables only in src/config.ts, not at arbitrary call sites.
+note: |
+  Scattered environment reads make configuration implicit and untestable. Parse
+  and validate every variable once in src/config.ts, then inject the typed config.
+  Tests and code outside src/ are ignored.
+rule:
+  any:
+    - pattern: process.env
+    - pattern: env.$KEY
+files:
+  - "**/src/**"
+ignores:
+  - "**/*.test.ts"
+  - "**/src/config.ts"

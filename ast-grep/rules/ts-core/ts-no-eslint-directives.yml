@@ -1,0 +1,11 @@
+id: ts-no-eslint-directives
+language: TypeScript
+severity: error
+message: Do not use eslint directives; suppressions must be biome-ignore comments with a reason.
+note: |
+  Exaecut repositories lint with Biome, so eslint-disable comments have no effect
+  and silently rot. Use `// biome-ignore <rule>: <reason>` on the line above the
+  finding, and include the reason. Remove the stale directive.
+rule:
+  kind: comment
+  regex: "eslint-disable"

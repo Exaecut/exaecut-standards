@@ -1,0 +1,14 @@
+id: ts-no-double-cast
+snapshots:
+  const nested = (payload as unknown as Wrapper).value;:
+    labels:
+    - source: payload as unknown as Wrapper
+      style: primary
+      start: 16
+      end: 45
+  const value = input as unknown as Target;:
+    labels:
+    - source: input as unknown as Target
+      style: primary
+      start: 14
+      end: 40

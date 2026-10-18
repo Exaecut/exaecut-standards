@@ -1,0 +1,9 @@
+id: api-no-console
+valid:
+  - 'request.log.info("handled");'
+  - "console.error(error);"
+  - 'console.warn("deprecated");'
+invalid:
+  - 'console.log("debugging");'
+  - 'console.debug("debugging");'
+  - 'console.info("debugging");'

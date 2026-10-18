@@ -1,0 +1,17 @@
+id: api-no-console
+language: TypeScript
+severity: warning
+message: Use the request or app logger instead of console in service code.
+note: |
+  console output bypasses structured logging, request correlation and log levels.
+  Use request.log or app.log so entries carry context and are collected in
+  production. console.error, console.warn and console.info are allowed.
+rule:
+  any:
+    - pattern: console.log($$$ARGS)
+    - pattern: console.debug($$$ARGS)
+    - pattern: console.info($$$ARGS)
+files:
+  - "**/src/**"
+ignores:
+  - "**/*.test.ts"

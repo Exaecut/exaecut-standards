@@ -1,0 +1,30 @@
+id: rust-no-unwrap-in-lib
+snapshots:
+  let value = map.get(&key).unwrap();:
+    labels:
+    - source: map.get(&key).unwrap()
+      style: primary
+      start: 12
+      end: 34
+    - source: unwrap
+      style: secondary
+      start: 26
+      end: 32
+    - source: map.get(&key).unwrap
+      style: secondary
+      start: 12
+      end: 32
+  let value = result.unwrap();:
+    labels:
+    - source: result.unwrap()
+      style: primary
+      start: 12
+      end: 27
+    - source: unwrap
+      style: secondary
+      start: 19
+      end: 25
+    - source: result.unwrap
+      style: secondary
+      start: 12
+      end: 25

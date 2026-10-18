@@ -1,0 +1,14 @@
+id: ts-no-double-cast-tsx
+snapshots:
+  const value = input as unknown as Target;:
+    labels:
+    - source: input as unknown as Target
+      style: primary
+      start: 14
+      end: 40
+  "export const node = <div>{payload as unknown as Wrapper}</div>;\n":
+    labels:
+    - source: payload as unknown as Wrapper
+      style: primary
+      start: 26
+      end: 55

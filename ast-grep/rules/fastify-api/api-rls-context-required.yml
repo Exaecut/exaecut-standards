@@ -1,0 +1,32 @@
+id: api-rls-context-required
+language: TypeScript
+severity: error
+message: Run route and module queries through withUserContext, withServiceContext or withMachineContext.
+note: |
+  The raw pool bypasses row-level security context. Use one of the with*Context
+  helpers and query with the transaction `client` they provide. This rule fires
+  only on the raw pool receivers inside src/routes and src/modules; `client.query`
+  is allowed.
+rule:
+  kind: call_expression
+  has:
+    field: function
+    kind: member_expression
+    all:
+      - has:
+          field: property
+          regex: "^query$"
+      - has:
+          field: object
+          any:
+            - pattern: db
+            - pattern: pool
+            - pattern: deps.db
+            - pattern: app.deps.db
+            - pattern: this.db
+            - pattern: request.server.deps.db
+files:
+  - "**/src/routes/**"
+  - "**/src/modules/**"
+ignores:
+  - "**/*.test.ts"

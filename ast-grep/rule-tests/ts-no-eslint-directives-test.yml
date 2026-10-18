@@ -1,0 +1,13 @@
+id: ts-no-eslint-directives
+valid:
+  - "const value = 1;"
+  - |
+    // biome-ignore lint/suspicious/noExplicitAny: external payload is untyped
+    const payload: any = readExternal();
+invalid:
+  - |
+    // eslint-disable-next-line no-console
+    console.log("legacy");
+  - |
+    /* eslint-disable */
+    const value = 1;

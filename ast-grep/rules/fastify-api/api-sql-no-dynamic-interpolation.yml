@@ -1,0 +1,36 @@
+id: api-sql-no-dynamic-interpolation
+language: TypeScript
+severity: error
+message: Use $1 parameters instead of interpolating values into SQL.
+note: |
+  Interpolating into a query string invites SQL injection and defeats statement
+  caching. Pass values through the parameter array. The one exception is a single
+  SCREAMING_SNAKE_CASE identifier that expands to a reused module-level SQL fragment.
+rule:
+  kind: template_substitution
+  inside:
+    kind: template_string
+    nthChild: 1
+    inside:
+      kind: arguments
+      inside:
+        kind: call_expression
+        has:
+          field: function
+          kind: member_expression
+          has:
+            field: property
+            regex: "^query$"
+  not:
+    all:
+      - has:
+          kind: identifier
+          regex: "^[A-Z][A-Z0-9_]*$"
+          nthChild: 1
+      - not:
+          has:
+            nthChild: 2
+files:
+  - "**/src/**"
+ignores:
+  - "**/*.test.ts"

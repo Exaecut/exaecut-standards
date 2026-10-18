@@ -1,0 +1,46 @@
+id: rust-unsafe-requires-safety-comment
+valid:
+  - |
+    fn read(ptr: *const u8) -> u8 {
+        // SAFETY: the caller guarantees ptr points to one initialized byte.
+        let value = unsafe { *ptr };
+        value
+    }
+  - |
+    fn read(ptr: *const u8) -> u8 {
+        // SAFETY: ptr is valid for reads for the duration of the call.
+        return unsafe { *ptr };
+    }
+  - |
+    fn touch(ptr: *const u8) {
+        // SAFETY: ptr is valid for reads.
+        unsafe { *ptr; }
+    }
+  - |
+    fn conditional(ptr: *const u8, flag: bool) -> u8 {
+        if flag {
+            // SAFETY: ptr is valid for reads on this branch.
+            unsafe { *ptr }
+        } else {
+            0
+        }
+    }
+invalid:
+  - |
+    fn read(ptr: *const u8) -> u8 {
+        let value = unsafe { *ptr };
+        value
+    }
+  - |
+    fn touch(ptr: *const u8) {
+        unsafe { *ptr; }
+    }
+  - |
+    fn wrap(ptr: *const u8) -> u8 {
+        consume(unsafe { *ptr })
+    }
+  - |
+    fn assign(ptr: *mut u8) {
+        let mut value = 0;
+        value = unsafe { *ptr };
+    }

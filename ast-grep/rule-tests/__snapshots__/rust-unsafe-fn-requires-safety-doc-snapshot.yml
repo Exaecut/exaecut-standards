@@ -1,0 +1,36 @@
+id: rust-unsafe-fn-requires-safety-doc
+snapshots:
+  "/// Reads one byte.\npub unsafe fn read(ptr: *const u8) -> u8 {\n    unsafe { *ptr }\n}\n":
+    labels:
+    - source: |-
+        pub unsafe fn read(ptr: *const u8) -> u8 {
+            unsafe { *ptr }
+        }
+      style: primary
+      start: 20
+      end: 84
+    - source: pub
+      style: secondary
+      start: 20
+      end: 23
+    - source: unsafe
+      style: secondary
+      start: 24
+      end: 30
+  "/// Writes one byte.\npub unsafe fn write(ptr: *mut u8, value: u8) {\n    unsafe { *ptr = value; }\n}\n":
+    labels:
+    - source: |-
+        pub unsafe fn write(ptr: *mut u8, value: u8) {
+            unsafe { *ptr = value; }
+        }
+      style: primary
+      start: 21
+      end: 98
+    - source: pub
+      style: secondary
+      start: 21
+      end: 24
+    - source: unsafe
+      style: secondary
+      start: 25
+      end: 31

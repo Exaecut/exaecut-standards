@@ -1,0 +1,7 @@
+id: api-no-process-env
+valid:
+  - "const { databaseUrl } = config;"
+  - "const port = configuration.port;"
+invalid:
+  - "const url = process.env.DATABASE_URL;"
+  - "const level = env.LOG_LEVEL;"

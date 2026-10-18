@@ -1,0 +1,20 @@
+id: api-no-console
+snapshots:
+  console.debug("debugging");:
+    labels:
+    - source: console.debug("debugging")
+      style: primary
+      start: 0
+      end: 26
+  console.info("debugging");:
+    labels:
+    - source: console.info("debugging")
+      style: primary
+      start: 0
+      end: 25
+  console.log("debugging");:
+    labels:
+    - source: console.log("debugging")
+      style: primary
+      start: 0
+      end: 24

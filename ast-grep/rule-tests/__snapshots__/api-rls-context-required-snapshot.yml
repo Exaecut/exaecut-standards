@@ -1,0 +1,110 @@
+id: api-rls-context-required
+snapshots:
+  "await pool.query(\"SELECT 1\");\n":
+    labels:
+    - source: pool.query("SELECT 1")
+      style: primary
+      start: 6
+      end: 28
+    - source: query
+      style: secondary
+      start: 11
+      end: 16
+    - source: pool
+      style: secondary
+      start: 6
+      end: 10
+    - source: pool.query
+      style: secondary
+      start: 6
+      end: 16
+  "const { rows } = await app.deps.db.query(\"SELECT 1\");\n":
+    labels:
+    - source: app.deps.db.query("SELECT 1")
+      style: primary
+      start: 23
+      end: 52
+    - source: query
+      style: secondary
+      start: 35
+      end: 40
+    - source: app.deps.db
+      style: secondary
+      start: 23
+      end: 34
+    - source: app.deps.db.query
+      style: secondary
+      start: 23
+      end: 40
+  "const { rows } = await db.query(\"SELECT 1\");\n":
+    labels:
+    - source: db.query("SELECT 1")
+      style: primary
+      start: 23
+      end: 43
+    - source: query
+      style: secondary
+      start: 26
+      end: 31
+    - source: db
+      style: secondary
+      start: 23
+      end: 25
+    - source: db.query
+      style: secondary
+      start: 23
+      end: 31
+  "const { rows } = await deps.db.query(\"SELECT 1\");\n":
+    labels:
+    - source: deps.db.query("SELECT 1")
+      style: primary
+      start: 23
+      end: 48
+    - source: query
+      style: secondary
+      start: 31
+      end: 36
+    - source: deps.db
+      style: secondary
+      start: 23
+      end: 30
+    - source: deps.db.query
+      style: secondary
+      start: 23
+      end: 36
+  "const { rows } = await request.server.deps.db.query(\"SELECT 1\");\n":
+    labels:
+    - source: request.server.deps.db.query("SELECT 1")
+      style: primary
+      start: 23
+      end: 63
+    - source: query
+      style: secondary
+      start: 46
+      end: 51
+    - source: request.server.deps.db
+      style: secondary
+      start: 23
+      end: 45
+    - source: request.server.deps.db.query
+      style: secondary
+      start: 23
+      end: 51
+  "const { rows } = await this.db.query(\"SELECT 1\");\n":
+    labels:
+    - source: this.db.query("SELECT 1")
+      style: primary
+      start: 23
+      end: 48
+    - source: query
+      style: secondary
+      start: 31
+      end: 36
+    - source: this.db
+      style: secondary
+      start: 23
+      end: 30
+    - source: this.db.query
+      style: secondary
+      start: 23
+      end: 36

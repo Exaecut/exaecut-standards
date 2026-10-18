@@ -1,0 +1,15 @@
+id: api-sql-no-dynamic-interpolation
+valid:
+  - |
+    await client.query(`SELECT * FROM products WHERE id = $1`, [id]);
+  - |
+    await client.query(`SELECT ${PRODUCT_SELECT} FROM products`);
+  - |
+    await client.query("SELECT $1", [`${id}`]);
+invalid:
+  - |
+    await client.query(`SELECT * FROM products WHERE id = ${id}`);
+  - |
+    await client.query(`SELECT * FROM ${tableName}`);
+  - |
+    await db.query(`SELECT * FROM users WHERE email = ${user.email}`);

@@ -1,0 +1,11 @@
+id: ts-no-ts-suppression-comments-tsx
+language: Tsx
+severity: error
+message: Do not suppress TypeScript diagnostics with @ts-ignore, @ts-nocheck or @ts-expect-error.
+note: |
+  Suppression comments hide type errors from every future reader and from CI.
+  Fix the underlying type error, or narrow the boundary with a runtime check.
+  Remove the directive rather than adding another layer of suppression.
+rule:
+  kind: comment
+  regex: "@ts-(ignore|nocheck|expect-error)"

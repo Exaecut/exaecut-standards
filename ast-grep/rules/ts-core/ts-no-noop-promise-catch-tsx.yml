@@ -1,0 +1,17 @@
+id: ts-no-noop-promise-catch-tsx
+language: Tsx
+severity: warning
+message: Do not attach a no-op catch handler; it hides rejections without handling them.
+note: |
+  `catch(() => {})` and `catch(() => undefined)` look like error handling but
+  discard the error. Either handle the rejection, rethrow it, or make the
+  fire-and-forget intent explicit with `void promise` when that is truly intended.
+rule:
+  any:
+    - pattern: $PROMISE.catch(() => {})
+    - pattern: $PROMISE.catch(() => undefined)
+ignores:
+  - "**/*.test.ts"
+  - "**/*.test.tsx"
+  - "**/*.spec.ts"
+  - "**/*.spec.tsx"

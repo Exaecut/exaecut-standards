@@ -1,0 +1,17 @@
+id: api-no-request-cast
+language: TypeScript
+severity: warning
+message: Do not cast request input; declare a route schema and let Fastify validate it.
+note: |
+  `request.body as T` asserts a shape that was never validated. Declare the route
+  schema (JSON schema or typed schema) so Fastify validates and types the input at
+  the boundary. Then read the already-typed value without a cast.
+rule:
+  any:
+    - pattern: request.body as $TYPE
+    - pattern: request.params as $TYPE
+    - pattern: request.query as $TYPE
+files:
+  - "**/src/**"
+ignores:
+  - "**/*.test.ts"

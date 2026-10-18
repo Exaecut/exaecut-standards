@@ -1,0 +1,80 @@
+id: api-sql-no-dynamic-interpolation
+snapshots:
+  "await client.query(`SELECT * FROM ${tableName}`);\n":
+    labels:
+    - source: ${tableName}
+      style: primary
+      start: 34
+      end: 46
+    - source: query
+      style: secondary
+      start: 13
+      end: 18
+    - source: client.query
+      style: secondary
+      start: 6
+      end: 18
+    - source: client.query(`SELECT * FROM ${tableName}`)
+      style: secondary
+      start: 6
+      end: 48
+    - source: (`SELECT * FROM ${tableName}`)
+      style: secondary
+      start: 18
+      end: 48
+    - source: "`SELECT * FROM ${tableName}`"
+      style: secondary
+      start: 19
+      end: 47
+  "await client.query(`SELECT * FROM products WHERE id = ${id}`);\n":
+    labels:
+    - source: ${id}
+      style: primary
+      start: 54
+      end: 59
+    - source: query
+      style: secondary
+      start: 13
+      end: 18
+    - source: client.query
+      style: secondary
+      start: 6
+      end: 18
+    - source: client.query(`SELECT * FROM products WHERE id = ${id}`)
+      style: secondary
+      start: 6
+      end: 61
+    - source: (`SELECT * FROM products WHERE id = ${id}`)
+      style: secondary
+      start: 18
+      end: 61
+    - source: "`SELECT * FROM products WHERE id = ${id}`"
+      style: secondary
+      start: 19
+      end: 60
+  "await db.query(`SELECT * FROM users WHERE email = ${user.email}`);\n":
+    labels:
+    - source: ${user.email}
+      style: primary
+      start: 50
+      end: 63
+    - source: query
+      style: secondary
+      start: 9
+      end: 14
+    - source: db.query
+      style: secondary
+      start: 6
+      end: 14
+    - source: db.query(`SELECT * FROM users WHERE email = ${user.email}`)
+      style: secondary
+      start: 6
+      end: 65
+    - source: (`SELECT * FROM users WHERE email = ${user.email}`)
+      style: secondary
+      start: 14
+      end: 65
+    - source: "`SELECT * FROM users WHERE email = ${user.email}`"
+      style: secondary
+      start: 15
+      end: 64

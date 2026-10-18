@@ -1,0 +1,12 @@
+id: rust-no-todo
+language: Rust
+severity: warning
+message: Do not ship todo! or unimplemented!; return a real error or implement the path.
+note: |
+  `todo!()` and `unimplemented!()` panic at runtime. Either implement the branch
+  or return a typed error that the caller can handle. If a placeholder is truly
+  required, track it with an explicit issue and a clear panic message.
+rule:
+  any:
+    - pattern: todo!($$$ARGS)
+    - pattern: unimplemented!($$$ARGS)

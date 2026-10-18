@@ -1,0 +1,11 @@
+id: prgpu-placeholder
+valid:
+  - |
+    fn render(frame: &mut Frame) {
+        frame.clear();
+    }
+  - |
+    let effect = EffectBuilder::new().build();
+invalid:
+  - "__exaecut_prgpu_placeholder_never_matches__(value);"
+  - "let x = __exaecut_prgpu_placeholder_never_matches__(a, b);"

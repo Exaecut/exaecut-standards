@@ -1,0 +1,10 @@
+id: rust-no-dbg
+language: Rust
+severity: error
+message: Remove dbg! before merging; use tracing or log with a level instead.
+note: |
+  dbg! writes to stderr outside the logging pipeline and is easy to leave behind.
+  Use the crate's tracing/log statements when diagnostics are needed, or delete
+  the macro once the investigation is finished.
+rule:
+  pattern: dbg!($$$ARGS)

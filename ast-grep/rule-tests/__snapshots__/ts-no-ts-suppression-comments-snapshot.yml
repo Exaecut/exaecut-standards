@@ -1,0 +1,20 @@
+id: ts-no-ts-suppression-comments
+snapshots:
+  "/* @ts-nocheck */\nconst value = 1;\n":
+    labels:
+    - source: /* @ts-nocheck */
+      style: primary
+      start: 0
+      end: 17
+  "// @ts-expect-error -- legacy call\nlegacyCall();\n":
+    labels:
+    - source: // @ts-expect-error -- legacy call
+      style: primary
+      start: 0
+      end: 34
+  "// @ts-ignore\nconst value: number = \"not a number\";\n":
+    labels:
+    - source: // @ts-ignore
+      style: primary
+      start: 0
+      end: 13

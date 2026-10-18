@@ -1,0 +1,20 @@
+id: rust-no-todo
+snapshots:
+  todo!("handle the remaining formats");:
+    labels:
+    - source: todo!("handle the remaining formats")
+      style: primary
+      start: 0
+      end: 37
+  todo!();:
+    labels:
+    - source: todo!()
+      style: primary
+      start: 0
+      end: 7
+  unimplemented!("wire this up");:
+    labels:
+    - source: unimplemented!("wire this up")
+      style: primary
+      start: 0
+      end: 30

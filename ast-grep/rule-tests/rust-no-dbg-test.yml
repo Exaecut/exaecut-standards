@@ -1,0 +1,7 @@
+id: rust-no-dbg
+valid:
+  - 'tracing::debug!("loaded {} items", items.len());'
+  - 'log::info!("started");'
+invalid:
+  - "dbg!(value);"
+  - "let result = dbg!(compute());"

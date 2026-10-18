@@ -1,0 +1,14 @@
+id: ts-no-noop-promise-catch-tsx
+snapshots:
+  task.catch(() => undefined);:
+    labels:
+    - source: task.catch(() => undefined)
+      style: primary
+      start: 0
+      end: 27
+  "task.catch(() => {});":
+    labels:
+    - source: task.catch(() => {})
+      style: primary
+      start: 0
+      end: 20

@@ -1,0 +1,11 @@
+id: prgpu-placeholder
+language: Rust
+severity: off
+message: "placeholder: prgpu rules are not written yet"
+note: |
+  This rule exists only so the prgpu rule directory is loaded and tested.
+  A dedicated session will replace it with the real prgpu rule pack; see
+  ast-grep/rules/prgpu/README.md for the research brief and deliverables.
+  The pattern targets a call that never occurs in real code.
+rule:
+  pattern: __exaecut_prgpu_placeholder_never_matches__($$$ARGS)

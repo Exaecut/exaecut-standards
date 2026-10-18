@@ -1,0 +1,26 @@
+id: rust-unsafe-requires-safety-comment
+snapshots:
+  "fn assign(ptr: *mut u8) {\n    let mut value = 0;\n    value = unsafe { *ptr };\n}\n":
+    labels:
+    - source: unsafe { *ptr }
+      style: primary
+      start: 61
+      end: 76
+  "fn read(ptr: *const u8) -> u8 {\n    let value = unsafe { *ptr };\n    value\n}\n":
+    labels:
+    - source: unsafe { *ptr }
+      style: primary
+      start: 48
+      end: 63
+  "fn touch(ptr: *const u8) {\n    unsafe { *ptr; }\n}\n":
+    labels:
+    - source: unsafe { *ptr; }
+      style: primary
+      start: 31
+      end: 47
+  "fn wrap(ptr: *const u8) -> u8 {\n    consume(unsafe { *ptr })\n}\n":
+    labels:
+    - source: unsafe { *ptr }
+      style: primary
+      start: 44
+      end: 59

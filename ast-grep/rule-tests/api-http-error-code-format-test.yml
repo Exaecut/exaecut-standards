@@ -1,0 +1,8 @@
+id: api-http-error-code-format
+valid:
+  - 'throw new HttpError(400, "bad_request", "bad input");'
+  - 'throw new HttpError(404, "billing/no_customer", "no customer");'
+invalid:
+  - 'throw new HttpError(400, "BadRequest", "bad input");'
+  - 'throw new HttpError(400, "bad request", "bad input");'
+  - 'throw new HttpError(400, "Bad/Code", "bad input");'

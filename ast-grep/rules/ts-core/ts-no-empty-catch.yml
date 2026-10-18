@@ -1,0 +1,16 @@
+id: ts-no-empty-catch
+language: TypeScript
+severity: error
+message: Do not swallow errors with an empty catch block.
+note: |
+  An empty catch hides failures and makes production incidents unexplainable.
+  Handle the error, rethrow it with context, or add an explanatory comment when
+  ignoring it is genuinely intentional. A comment inside the block silences this rule.
+rule:
+  any:
+    - pattern:
+        context: try { $$$BODY } catch ($ERROR) {}
+        strictness: cst
+    - pattern:
+        context: try { $$$BODY } catch {}
+        strictness: cst

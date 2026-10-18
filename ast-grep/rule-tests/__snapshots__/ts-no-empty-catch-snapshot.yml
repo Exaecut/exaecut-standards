@@ -1,0 +1,20 @@
+id: ts-no-empty-catch
+snapshots:
+  "try {\n  run();\n} catch (error) {}\n":
+    labels:
+    - source: |-
+        try {
+          run();
+        } catch (error) {}
+      style: primary
+      start: 0
+      end: 33
+  "try {\n  run();\n} catch {}\n":
+    labels:
+    - source: |-
+        try {
+          run();
+        } catch {}
+      style: primary
+      start: 0
+      end: 25

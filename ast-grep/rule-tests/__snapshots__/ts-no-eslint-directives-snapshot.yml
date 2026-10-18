@@ -1,0 +1,14 @@
+id: ts-no-eslint-directives
+snapshots:
+  "/* eslint-disable */\nconst value = 1;\n":
+    labels:
+    - source: /* eslint-disable */
+      style: primary
+      start: 0
+      end: 20
+  "// eslint-disable-next-line no-console\nconsole.log(\"legacy\");\n":
+    labels:
+    - source: // eslint-disable-next-line no-console
+      style: primary
+      start: 0
+      end: 38

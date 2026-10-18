@@ -1,0 +1,20 @@
+{
+  "name": "@exaecut/standards",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Exaecut shared engineering standards: Biome presets, ast-grep rule packs and Knip defaults.",
+  "type": "module",
+  "license": "MIT OR Apache-2.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "ast-grep test --include-off && biome check .",
+    "lint": "biome check .",
+    "format": "biome format --write ."
+  },
+  "devDependencies": {
+    "@ast-grep/cli": "0.51.0",
+    "@biomejs/biome": "2.5.15"
+  }
+}

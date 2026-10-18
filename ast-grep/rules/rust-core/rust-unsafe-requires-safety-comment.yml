@@ -1,0 +1,27 @@
+id: rust-unsafe-requires-safety-comment
+language: Rust
+severity: error
+message: Every unsafe block needs a `// SAFETY:` comment explaining why it is sound.
+note: |
+  An unsafe block is a proof obligation: state which invariant makes the operation
+  sound and why it holds at this call site. Put `// SAFETY: ...` directly above the
+  unsafe block or directly above the statement containing it.
+rule:
+  kind: unsafe_block
+  not:
+    any:
+      - follows:
+          kind: line_comment
+          regex: "^// SAFETY:"
+          stopBy: neighbor
+      - inside:
+          stopBy: end
+          any:
+            - kind: let_declaration
+            - kind: expression_statement
+            - kind: return_expression
+            - kind: assignment_expression
+          follows:
+            kind: line_comment
+            regex: "^// SAFETY:"
+            stopBy: neighbor
